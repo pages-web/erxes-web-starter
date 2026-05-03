@@ -1,9 +1,20 @@
 import { gql } from "@apollo/client";
 
 export const CP_WISHLIST_ADD = gql`
-  mutation cpWishlistAdd($productId: String, $customerId: String) {
+  mutation cpWishlistAdd($productId: String!, $customerId: String!) {
     cpWishlistAdd(productId: $productId, customerId: $customerId) {
       _id
+      productId
+      customerId
+      product {
+        _id
+        name
+        code
+        unitPrice
+        attachment {
+          url
+        }
+      }
     }
   }
 `;
@@ -29,6 +40,8 @@ export const CP_WISHLIST_UPDATE = gql`
       customerId: $customerId
     ) {
       _id
+      productId
+      customerId
     }
   }
 `;
@@ -47,6 +60,7 @@ export const CP_WISHLIST_REMOVE = gql`
   mutation cpWishlistRemove($_id: String!) {
     cpWishlistRemove(_id: $_id) {
       _id
+      productId
     }
   }
 `;
