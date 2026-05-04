@@ -41,7 +41,7 @@ export type CpProductReviewAddData = {
 };
 
 export const PRODUCT_REVIEW_UPDATE = gql`
-  mutation productreviewUpdate(
+  mutation cpProductReviewUpdate(
     $_id: String!
     $productId: String
     $customerId: String
@@ -49,7 +49,7 @@ export const PRODUCT_REVIEW_UPDATE = gql`
     $description: String
     $info: JSON
   ) {
-    productreviewUpdate(
+    cpProductReviewUpdate(
       _id: $_id
       productId: $productId
       customerId: $customerId
@@ -74,8 +74,10 @@ export type ProductReviewUpdateData = {
 };
 
 export const PRODUCT_REVIEW_REMOVE = gql`
-  mutation productReviewRemove($_id: String!) {
-    productReviewRemove(_id: $_id)
+  mutation cpProductReviewRemove($_id: String!) {
+    cpProductReviewRemove(_id: $_id) {
+      _id
+    }
   }
 `;
 
@@ -84,5 +86,5 @@ export type ProductReviewRemoveVariables = {
 };
 
 export type ProductReviewRemoveData = {
-  productReviewRemove: boolean;
+  cpProductReviewRemove: { _id: string };
 };
