@@ -36,6 +36,18 @@ export const CP_ORDERS_ADD = gql`
   mutation cpOrdersAdd(${addEditParamDefs}) {
     cpOrdersAdd(${addEditParams}) {
       _id
+      status
+      totalAmount
+      number
+      deliveryInfo
+      items {
+        _id
+        productId
+        productName
+        productImgUrl
+        count
+        unitPrice
+      }
     }
   }
 `;
