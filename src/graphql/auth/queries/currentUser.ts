@@ -50,7 +50,9 @@ export const CLIENT_PORTAL_CURRENT_USER = gql`
       isVerified
       isPhoneVerified
       isEmailVerified
-      socialAuthProviders
+      socialAuthProviders {
+        provider
+      }
       primaryAuthMethod
       lastLoginAt
       createdAt

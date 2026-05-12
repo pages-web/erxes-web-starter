@@ -7,7 +7,9 @@ export type Wishlist = {
   product?: {
     _id: string;
     name?: string;
-    attachment?: { url: string };
+    code?: string;
+    unitPrice?: number;
+    attachment?: { url?: string };
   };
 };
 
@@ -31,7 +33,7 @@ export type CpWishData = {
 };
 
 export const CP_WISHLIST = gql`
-  query cpWishlist($customerId: String) {
+  query cpWishlist($customerId: String!) {
     cpWishlist(customerId: $customerId) {
       _id
       productId
@@ -39,6 +41,8 @@ export const CP_WISHLIST = gql`
       product {
         _id
         name
+        code
+        unitPrice
         attachment {
           url
         }
